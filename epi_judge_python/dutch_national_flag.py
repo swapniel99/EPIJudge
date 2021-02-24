@@ -9,8 +9,21 @@ RED, WHITE, BLUE = range(3)
 
 
 def dutch_flag_partition(pivot_index: int, A: List[int]) -> None:
-    # TODO - you fill in here.
-    return
+    piv = A[pivot_index]
+
+    left = 0
+    right = len(A) - 1
+    ptr = 0
+    while ptr <= right:
+        if A[ptr] < piv:
+            A[left], A[ptr] = A[ptr], A[left]
+            left += 1
+            ptr += 1
+        elif A[ptr] > piv:
+            A[ptr], A[right] = A[right], A[ptr]
+            right -= 1
+        else:
+            ptr += 1
 
 
 @enable_executor_hook
@@ -41,6 +54,5 @@ def dutch_flag_partition_wrapper(executor, A, pivot_idx):
 
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main('dutch_national_flag.py',
-                                       'dutch_national_flag.tsv',
+        generic_test.generic_test_main('dutch_national_flag.py', 'dutch_national_flag.tsv',
                                        dutch_flag_partition_wrapper))

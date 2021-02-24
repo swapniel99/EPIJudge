@@ -8,8 +8,18 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def even_odd(A: List[int]) -> None:
-    # TODO - you fill in here.
-    return
+    left = 0
+    right = len(A) - 1
+
+    while left < right:
+        if A[left] % 2 == 0:
+            left += 1
+        elif A[right] % 2 == 1:
+            right -= 1
+        else:
+            A[left], A[right] = A[right], A[left]
+            left += 1
+            right -= 1
 
 
 @enable_executor_hook
@@ -31,6 +41,4 @@ def even_odd_wrapper(executor, A):
 
 
 if __name__ == '__main__':
-    exit(
-        generic_test.generic_test_main('even_odd_array.py',
-                                       'even_odd_array.tsv', even_odd_wrapper))
+    exit(generic_test.generic_test_main('even_odd_array.py', 'even_odd_array.tsv', even_odd_wrapper))
