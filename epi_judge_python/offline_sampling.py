@@ -9,7 +9,10 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def random_sampling(k: int, A: List[int]) -> None:
-    # TODO - you fill in here.
+    import random
+    for i in range(k):
+        j = random.randrange(i, len(A))
+        A[i], A[j] = A[j], A[i]
     return
 
 
@@ -41,7 +44,4 @@ def random_sampling_wrapper(executor, k, A):
 
 
 if __name__ == '__main__':
-    exit(
-        generic_test.generic_test_main('offline_sampling.py',
-                                       'offline_sampling.tsv',
-                                       random_sampling_wrapper))
+    exit(generic_test.generic_test_main('offline_sampling.py', 'offline_sampling.tsv', random_sampling_wrapper))
