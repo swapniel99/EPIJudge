@@ -8,25 +8,24 @@ def border(square_matrix, depth, res=None):
 
     if res is None:
         res = list()
+
+    if N == depth * 2 + 1:
+        res.append(square_matrix[depth][depth])
+        return res
+
     i = depth
     j = depth
 
-    while j < N - depth:
+    while j < N - 1 - depth:
         res.append(square_matrix[i][j])
         j += 1
-    j -= 1
-    i += 1
-    while i < N - depth:
+    while i < N - 1 - depth:
         res.append(square_matrix[i][j])
         i += 1
-    i -= 1
-    j -= 1
-    while j >= depth and i > depth:
+    while j > depth:
         res.append(square_matrix[i][j])
         j -= 1
-    j += 1
-    i -= 1
-    while i >= depth + 1 and j < N - depth - 1:
+    while i > depth:
         res.append(square_matrix[i][j])
         i -= 1
 
