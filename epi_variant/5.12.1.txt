@@ -1,0 +1,2 @@
+No. Because RAND_MAX mod n is not necessarily 0.
+But if RANDMAX >> n, then it may act close to uniform.

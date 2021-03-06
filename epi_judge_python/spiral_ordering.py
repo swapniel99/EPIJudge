@@ -32,18 +32,6 @@ def border(square_matrix, depth, res=None):
     return res
 
 
-# def spiral_helper(square_matrix: List[List[int]], depth) -> List[int]:
-#     N = len(square_matrix)
-#     if depth * 2 >= N:
-#         return list()
-#     else:
-#         return border(square_matrix, depth) + spiral_helper(square_matrix, depth + 1)
-#
-#
-# def matrix_in_spiral_order(square_matrix: List[List[int]]) -> List[int]:
-#     return spiral_helper(square_matrix, 0)
-
-
 def matrix_in_spiral_order(square_matrix: List[List[int]]) -> List[int]:
     N = len(square_matrix)
     spiral = list()
