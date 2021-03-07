@@ -35,8 +35,7 @@ def string_to_int(s: str) -> int:
 
     res = 0
     for i in range(start, len(s)):
-        res *= 10
-        res += ord(s[i]) - ord('0')
+        res = 10 * res + ord(s[i]) - ord('0')
 
     if neg:
         res = -res
