@@ -3,13 +3,45 @@ from test_framework.test_failure import TestFailure
 
 
 def int_to_string(x: int) -> str:
-    # TODO - you fill in here.
-    return '0'
+    if x == 0:
+        return '0'
+
+    neg = False
+    if x < 0:
+        neg = True
+        x = -x
+
+    res = list()
+    while x:
+        res.append(chr(ord('0') + x % 10))
+        x //= 10
+
+    if neg:
+        res.append('-')
+
+    res.reverse()
+    return ''.join(res)
 
 
 def string_to_int(s: str) -> int:
-    # TODO - you fill in here.
-    return 0
+    start = 0
+    neg = False
+
+    if s[0] == '-':
+        start = 1
+        neg = True
+    elif s[0] == '+':
+        start = 1
+
+    res = 0
+    for i in range(start, len(s)):
+        res *= 10
+        res += ord(s[i]) - ord('0')
+
+    if neg:
+        res = -res
+
+    return res
 
 
 def wrapper(x, s):
@@ -20,7 +52,5 @@ def wrapper(x, s):
 
 
 if __name__ == '__main__':
-    exit(
-        generic_test.generic_test_main('string_integer_interconversion.py',
-                                       'string_integer_interconversion.tsv',
-                                       wrapper))
+    exit(generic_test.generic_test_main('string_integer_interconversion.py', 'string_integer_interconversion.tsv',
+                                        wrapper))
