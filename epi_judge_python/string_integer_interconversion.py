@@ -1,5 +1,6 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
+import string
 
 
 def int_to_string(x: int) -> str:
@@ -13,7 +14,7 @@ def int_to_string(x: int) -> str:
 
     res = list()
     while x:
-        res.append(chr(ord('0') + x % 10))
+        res.append(string.digits[x % 10])
         x //= 10
 
     if neg:
