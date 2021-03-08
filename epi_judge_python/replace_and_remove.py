@@ -7,15 +7,6 @@ from test_framework.test_utils import enable_executor_hook
 
 # Time O(n), Space O(1)
 def replace_and_remove(size: int, s: List[str]) -> int:
-    ca = 0
-    cb = 0
-    for c in s:
-        if c == 'a':
-            ca += 1
-        elif c == 'b':
-            cb += 1
-    final_len = size + ca - cb
-
     reader = size - 1
     writer = -1
 
@@ -28,6 +19,8 @@ def replace_and_remove(size: int, s: List[str]) -> int:
             s[writer] = s[reader]
             writer -= 1
         reader -= 1
+
+    final_len = -writer - 1
 
     for i in range(final_len):
         s[i] = s[-final_len + i]
