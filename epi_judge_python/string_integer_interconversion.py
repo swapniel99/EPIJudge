@@ -3,6 +3,7 @@ from test_framework.test_failure import TestFailure
 import string
 
 
+# Time O(log x), Space O(log x)
 def int_to_string(x: int) -> str:
     if x == 0:
         return '0'
@@ -24,6 +25,7 @@ def int_to_string(x: int) -> str:
     return ''.join(res)
 
 
+# Time O(n), Space O(1)
 def string_to_int(s: str) -> int:
     start = 0
     neg = False

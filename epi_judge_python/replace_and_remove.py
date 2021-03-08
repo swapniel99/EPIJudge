@@ -5,6 +5,7 @@ from test_framework import generic_test
 from test_framework.test_utils import enable_executor_hook
 
 
+# Time O(n), Space O(1)
 def replace_and_remove(size: int, s: List[str]) -> int:
     ca = 0
     cb = 0

@@ -3,6 +3,7 @@ from typing import List
 from test_framework import generic_test
 
 
+# Time O(n^2), Space O(1) | n is side of square matrix
 def border(square_matrix, depth, res=None):
     N = len(square_matrix)
 

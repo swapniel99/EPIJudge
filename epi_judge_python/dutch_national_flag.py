@@ -8,6 +8,7 @@ from test_framework.test_utils import enable_executor_hook
 RED, WHITE, BLUE = range(3)
 
 
+# Time O(n), Space O(1)
 def dutch_flag_partition(pivot_index: int, A: List[int]) -> None:
     piv = A[pivot_index]
 

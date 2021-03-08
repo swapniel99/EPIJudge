@@ -8,6 +8,7 @@ from test_framework.random_sequence_checker import (
 from test_framework.test_utils import enable_executor_hook
 
 
+# Time O(k), Space O(1)
 def random_sampling(k: int, A: List[int]) -> None:
     import random
     for i in range(k):

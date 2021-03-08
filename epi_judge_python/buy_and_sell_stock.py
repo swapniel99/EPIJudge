@@ -4,6 +4,7 @@ from test_framework import generic_test
 
 
 # # Divide and Conquer
+# # Time O(n), Space O(log n)
 # def buy_and_sell_stock_once(prices: List[float]) -> float:
 #     def helper(start, end):
 #         if start + 1 == end:
@@ -15,6 +16,7 @@ from test_framework import generic_test
 #     return helper(0, len(prices))[0]
 
 
+# Time O(n), Space O(1)
 def buy_and_sell_stock_once(prices: List[float]) -> float:
     buy = float('inf')
     profit = 0

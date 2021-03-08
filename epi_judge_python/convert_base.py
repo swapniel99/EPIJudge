@@ -4,6 +4,7 @@ chars = '0123456789ABCDEF'
 s2d = {c: i for i, c in enumerate(chars)}
 
 
+# Time O(n + n * (log b1)/(log b2)), Space O(n * (log b1)/(log b2))
 def convert_base(num_as_string: str, b1: int, b2: int) -> str:
     start = 0
     neg = False
