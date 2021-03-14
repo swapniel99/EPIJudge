@@ -53,3 +53,14 @@ def list_size(node):
         node = node.next
 
     return result
+
+
+def make_list(L):
+    dummy = ListNode()
+    ptr = dummy
+    for n in L:
+        node = ListNode(n)
+        ptr.next = node
+        ptr = ptr.next
+
+    return dummy.next

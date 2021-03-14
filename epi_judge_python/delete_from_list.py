@@ -7,8 +7,7 @@ from test_framework.test_utils import enable_executor_hook
 
 # Delete the node past this one. Assume node is not a tail.
 def delete_after(node: ListNode) -> None:
-    # TODO - you fill in here.
-    return
+    node.next = node.next.next
 
 
 @enable_executor_hook
@@ -29,7 +28,4 @@ def delete_from_list_wrapper(executor, head, node_idx):
 
 
 if __name__ == '__main__':
-    exit(
-        generic_test.generic_test_main('delete_from_list.py',
-                                       'delete_from_list.tsv',
-                                       delete_from_list_wrapper))
+    exit(generic_test.generic_test_main('delete_from_list.py', 'delete_from_list.tsv', delete_from_list_wrapper))
