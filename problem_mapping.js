@@ -698,7 +698,7 @@ problem_mapping = {
                 "total": 501
             },
             "Python: sorted_lists_merge.py": {
-                "passed": 1,
+                "passed": 501,
                 "total": 501
             }
         },
