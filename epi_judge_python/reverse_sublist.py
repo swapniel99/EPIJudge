@@ -9,10 +9,10 @@ def reverse_sublist(L: ListNode, start: int, finish: int) -> ListNode:
     for _ in range(start - 1):
         prev = prev.next
 
-    ptr = prev.next
+    last = prev.next
     for _ in range(start, finish):
-        temp = ptr.next
-        ptr.next = temp.next
+        temp = last.next
+        last.next = temp.next
         temp.next = prev.next
         prev.next = temp
 
