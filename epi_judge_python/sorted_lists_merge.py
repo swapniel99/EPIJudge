@@ -2,6 +2,7 @@ from list_node import ListNode
 from test_framework import generic_test
 
 
+# Time O(m+n), Space O(1)
 def merge_two_sorted_lists(L1: ListNode, L2: ListNode) -> ListNode:
     ptr1 = L1
     ptr2 = L2
@@ -15,7 +16,7 @@ def merge_two_sorted_lists(L1: ListNode, L2: ListNode) -> ListNode:
         else:
             ptr.next = ptr2
             ptr2 = ptr2.next
-        ptr = ptr
+        ptr = ptr.next
 
     ptr.next = ptr1 or ptr2
 
