@@ -1,0 +1,10 @@
+Yes.
+
+Let X be distance from head to start of cycle and Y be from start of cycle to intersection point.
+Let cycle length be L.
+
+X + Y = X + (X + 2Y)mod L
+
+(X + Y) mod L = 0
+
+X = L - Y
