@@ -1,25 +1,21 @@
 from list_node import ListNode, make_list
 
 
-def reverseList(head: ListNode):
-    if head is None:
-        return head
-
+def reverseList(head: ListNode) -> ListNode:
     dummy = ListNode(0, head)
 
-    prev = dummy
     ptr = dummy.next
-    while ptr.next is not None:
+    while ptr and ptr.next:
         temp = ptr.next
         ptr.next = temp.next
-        temp.next = prev.next
-        prev.next = temp
+        temp.next = dummy.next
+        dummy.next = temp
 
     return dummy.next
 
 
 def main():
-    l = [5, 23, 5, 23, 53, 3]
+    l = [1, 2, 3, 4, 5, 6]
     L = make_list(l)
 
     print(L)
