@@ -1,8 +1,10 @@
+from typing import Optional
+
 from list_node import ListNode
 from test_framework import generic_test
 
 
-def reverse_sublist(L: ListNode, start: int, finish: int) -> ListNode:
+def reverse_sublist(L: ListNode, start: int, finish: int) -> Optional[ListNode]:
     dummy = ListNode(0, L)
 
     prev = dummy

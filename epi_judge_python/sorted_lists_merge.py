@@ -1,9 +1,11 @@
+from typing import Optional
+
 from list_node import ListNode
 from test_framework import generic_test
 
 
 # Time O(m+n), Space O(1)
-def merge_two_sorted_lists(L1: ListNode, L2: ListNode) -> ListNode:
+def merge_two_sorted_lists(L1: ListNode, L2: ListNode) -> Optional[ListNode]:
     ptr1 = L1
     ptr2 = L2
     dummy = ListNode()

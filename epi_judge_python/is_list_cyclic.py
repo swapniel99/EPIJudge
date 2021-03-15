@@ -8,8 +8,23 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def has_cycle(head: ListNode) -> Optional[ListNode]:
-    # TODO - you fill in here.
-    return None
+    ptr1 = head
+    ptr2 = head
+
+    while ptr2 is not None and ptr2.next is not None:
+        ptr1 = ptr1.next
+        ptr2 = ptr2.next.next
+        if id(ptr1) == id(ptr2):
+            break
+    else:
+        return None
+
+    ptr2 = head
+    while id(ptr1) != id(ptr2):
+        ptr1 = ptr1.next
+        ptr2 = ptr2.next
+
+    return ptr1
 
 
 @enable_executor_hook
@@ -59,7 +74,4 @@ def has_cycle_wrapper(executor, head, cycle_idx):
 
 
 if __name__ == '__main__':
-    exit(
-        generic_test.generic_test_main('is_list_cyclic.py',
-                                       'is_list_cyclic.tsv',
-                                       has_cycle_wrapper))
+    exit(generic_test.generic_test_main('is_list_cyclic.py', 'is_list_cyclic.tsv', has_cycle_wrapper))
