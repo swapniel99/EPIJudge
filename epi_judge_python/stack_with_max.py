@@ -11,17 +11,22 @@ class Stack:
         return not bool(self.arr)
 
     def max(self) -> int:
-        return self.max_arr[-1]
+        return self.max_arr[-1][0]
 
     def pop(self) -> int:
         res = self.arr.pop()
         if res == self.max():
-            self.max_arr.pop()
+            if self.max_arr[-1][1] == 1:
+                self.max_arr.pop()
+            else:
+                self.max_arr[-1][1] -= 1
         return res
 
     def push(self, x: int) -> None:
-        if self.empty() or x >= self.max():
-            self.max_arr.append(x)
+        if self.empty() or x > self.max():
+            self.max_arr.append([x, 1])
+        elif x == self.max():
+            self.max_arr[-1][1] += 1
         self.arr.append(x)
 
 
