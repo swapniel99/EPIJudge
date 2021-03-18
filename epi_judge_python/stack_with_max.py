@@ -3,6 +3,11 @@ from test_framework.test_failure import TestFailure
 
 
 class Stack:
+    class MaxCount:
+        def __init__(self, max, count):
+            self.max = max
+            self.count = count
+
     def __init__(self):
         self.arr = list()
         self.max_arr = list()
@@ -11,22 +16,21 @@ class Stack:
         return not bool(self.arr)
 
     def max(self) -> int:
-        return self.max_arr[-1][0]
+        return self.max_arr[-1].max
 
     def pop(self) -> int:
         res = self.arr.pop()
         if res == self.max():
-            if self.max_arr[-1][1] == 1:
+            self.max_arr[-1].count -= 1
+            if self.max_arr[-1].count == 0:
                 self.max_arr.pop()
-            else:
-                self.max_arr[-1][1] -= 1
         return res
 
     def push(self, x: int) -> None:
         if self.empty() or x > self.max():
-            self.max_arr.append([x, 1])
+            self.max_arr.append(self.MaxCount(x, 1))
         elif x == self.max():
-            self.max_arr[-1][1] += 1
+            self.max_arr[-1].count += 1
         self.arr.append(x)
 
 
