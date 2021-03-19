@@ -11,7 +11,6 @@ def largest_complete_helper(node: BinaryTreeNode):
     perfect = perleft and perright and htleft == htright
     complete = perfect \
         or (perleft and compright and htleft == htright) \
-        or (perleft and perright and htleft == htright + 1) \
         or (compleft and perright and htleft == htright + 1)
     height = max(htleft, htright) + 1
     size = szleft + szright + 1
