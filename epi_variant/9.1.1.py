@@ -9,9 +9,7 @@ def largest_complete_helper(node: BinaryTreeNode):
     perright, compright, htright, szright, resright = largest_complete_helper(node.right)
 
     perfect = perleft and perright and htleft == htright
-    complete = perfect \
-        or (perleft and compright and htleft == htright) \
-        or (compleft and perright and htleft == htright + 1)
+    complete = (perleft and compright and htleft == htright) or (compleft and perright and htleft == htright + 1)
     height = max(htleft, htright) + 1
     size = szleft + szright + 1
     res = size if complete else max(resleft, resright)
