@@ -8,7 +8,7 @@ def k_balanced_binary_tree_helper(node: BinaryTreeNode, k: int):
     leftb, leftn, leftres = k_balanced_binary_tree_helper(node.left, k)
     rightb, rightn, rightres = k_balanced_binary_tree_helper(node.right, k)
 
-    balanced = abs(leftn - rightn) <= k
+    balanced = leftb and rightb and abs(leftn - rightn) <= k
     nodes = leftn + rightn + 1
     res = node if not balanced and leftb and rightb else leftres or rightres
 
