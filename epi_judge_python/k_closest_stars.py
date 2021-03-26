@@ -5,8 +5,10 @@ from typing import Iterator, List
 from test_framework import generic_test
 from test_framework.test_utils import enable_executor_hook
 
+import heapq, itertools
 
-class Star:
+
+class Star(object):
     def __init__(self, x: float, y: float, z: float) -> None:
         self.x, self.y, self.z = x, y, z
 
@@ -28,27 +30,29 @@ class Star:
 
 
 def find_closest_k_stars(stars: Iterator[Star], k: int) -> List[Star]:
-    # TODO - you fill in here.
-    return []
+    maxheap = list()
+
+    for star in itertools.islice(stars, k):
+        heapq.heappush(maxheap, (-star.distance, star))
+
+    for star in stars:
+        heapq.heappushpop(maxheap, (-star.distance, star))
+
+    return [x[1] for x in maxheap]
 
 
 def comp(expected_output, output):
     if len(output) != len(expected_output):
         return False
-    return all(
-        math.isclose(s.distance, d)
-        for s, d in zip(sorted(output), expected_output))
+    return all(math.isclose(s.distance, d) for s, d in zip(sorted(output), expected_output))
 
 
 @enable_executor_hook
 def find_closest_k_stars_wrapper(executor, stars, k):
     stars = [Star(*a) for a in stars]
-    return executor.run(functools.partial(find_closest_k_stars, iter(stars),
-                                          k))
+    return executor.run(functools.partial(find_closest_k_stars, iter(stars), k))
 
 
 if __name__ == '__main__':
-    exit(
-        generic_test.generic_test_main('k_closest_stars.py',
-                                       'k_closest_stars.tsv',
-                                       find_closest_k_stars_wrapper, comp))
+    exit(generic_test.generic_test_main('k_closest_stars.py', 'k_closest_stars.tsv', find_closest_k_stars_wrapper,
+                                        comp))
