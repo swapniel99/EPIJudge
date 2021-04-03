@@ -1450,7 +1450,7 @@ problem_mapping = {
                 "total": 9
             },
             "Python: anagrams.py": {
-                "passed": 0,
+                "passed": 9,
                 "total": 9
             }
         },
@@ -1464,7 +1464,7 @@ problem_mapping = {
                 "total": 305
             },
             "Python: is_string_permutable_to_palindrome.py": {
-                "passed": 0,
+                "passed": 305,
                 "total": 305
             }
         },
@@ -1492,7 +1492,7 @@ problem_mapping = {
                 "total": 101
             },
             "Python: lru_cache.py": {
-                "passed": 0,
+                "passed": 101,
                 "total": 101
             }
         },
@@ -1520,7 +1520,7 @@ problem_mapping = {
                 "total": 505
             },
             "Python: nearest_repeated_entries.py": {
-                "passed": 0,
+                "passed": 505,
                 "total": 505
             }
         },
