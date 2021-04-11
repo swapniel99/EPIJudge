@@ -1,5 +1,3 @@
-from test_framework import generic_test
-
 
 # Time O(mn), Space O(min(m, n))
 def levenshtein_distance(A: str, B: str) -> int:
@@ -19,7 +17,3 @@ def levenshtein_distance(A: str, B: str) -> int:
                 cache[j], prev = 1 + min(prev, cache[j], cache[j - 1]), cache[j]
 
     return cache[-1]
-
-
-if __name__ == '__main__':
-    exit(generic_test.generic_test_main('levenshtein_distance.py', 'levenshtein_distance.tsv', levenshtein_distance))
