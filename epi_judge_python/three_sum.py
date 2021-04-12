@@ -3,8 +3,7 @@ from typing import List
 from test_framework import generic_test
 
 
-def has_two_sum(A: List[int], t: int) -> bool:
-    start = 0
+def has_two_sum(A: List[int], t: int, start: int) -> bool:
     end = len(A) - 1
 
     while start <= end:
@@ -21,7 +20,7 @@ def has_two_sum(A: List[int], t: int) -> bool:
 
 def has_three_sum(A: List[int], t: int) -> bool:
     A.sort()
-    return any(has_two_sum(A, t - n) for n in A)
+    return any(has_two_sum(A, t - A[i], i) for i in range(len(A)))
 
 
 if __name__ == '__main__':
