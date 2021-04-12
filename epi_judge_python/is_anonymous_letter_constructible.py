@@ -6,7 +6,7 @@ from collections import Counter
 def is_letter_constructible_from_magazine(letter_text: str, magazine_text: str) -> bool:
     letter_count = Counter(letter_text)
     magazine_count = Counter(magazine_text)
-    return all((ct <= magazine_count[char] for char, ct in letter_count.items()))
+    return all(ct <= magazine_count[char] for char, ct in letter_count.items())
 
 
 if __name__ == '__main__':
