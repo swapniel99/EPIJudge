@@ -3,9 +3,7 @@
 def longestCommonSubsequence(text1: str, text2: str) -> str:
     m, n = len(text1), len(text2)
 
-    cache = list()
-    for _ in range(m + 1):
-        cache.append([0] * (n + 1))
+    cache = [[0] * (n + 1)] * (m + 1)
 
     for i in range(1, m + 1):
         for j in range(1, n + 1):

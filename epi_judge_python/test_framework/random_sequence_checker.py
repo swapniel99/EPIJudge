@@ -37,7 +37,8 @@ def check_frequencies(seq, n, false_negative_tolerance):
     # Check that there are roughly len(seq)/n occurrences of key.
     # By roughly we mean the difference is less than k_sigma.
     return all(
-        abs(freq - avg) <= k_sigma_indiv for freq in indiv_freqs.values())
+        abs(freq - avg) <= k_sigma_indiv for freq in indiv_freqs.values()
+    )
 
 
 def check_pairs_frequencies(seq, n, false_negative_tolerance):
