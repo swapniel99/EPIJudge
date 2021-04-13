@@ -11,8 +11,16 @@ MPG = 20
 # gallons[i] is the amount of gas in city i, and distances[i] is the
 # distance city i to the next city.
 def find_ample_city(gallons: List[int], distances: List[int]) -> int:
-    # TODO - you fill in here.
-    return 0
+    tank = 0
+    min_tank = float('inf')
+    min_i = None
+    for i in range(len(gallons)):
+        if tank < min_tank:
+            min_tank = tank
+            min_i = i
+        tank += gallons[i] - distances[i] / MPG
+
+    return min_i
 
 
 @enable_executor_hook
@@ -29,7 +37,4 @@ def find_ample_city_wrapper(executor, gallons, distances):
 
 
 if __name__ == '__main__':
-    exit(
-        generic_test.generic_test_main('refueling_schedule.py',
-                                       'refueling_schedule.tsv',
-                                       find_ample_city_wrapper))
+    exit(generic_test.generic_test_main('refueling_schedule.py', 'refueling_schedule.tsv', find_ample_city_wrapper))
