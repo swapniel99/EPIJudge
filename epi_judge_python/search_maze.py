@@ -21,9 +21,10 @@ def search_maze(maze: List[List[int]], s: Coordinate, e: Coordinate) -> List[Coo
         if c == e:
             ret = True
         else:
-            nbs = [(c.x + 1, c.y), (c.x - 1, c.y), (c.x, c.y + 1), (c.x, c.y - 1)]
-            ret = any(map(maze_helper, (Coordinate(x, y) for (x, y) in nbs if 0 <= x < m and 0 <= y < n
-                                        and maze[x][y] == 0)))
+            nbcs = [(c.x + 1, c.y), (c.x - 1, c.y), (c.x, c.y + 1), (c.x, c.y - 1)]
+            nbcs = map(lambda tup: Coordinate(tup[0], tup[1]), nbcs)
+            nbcs = filter(lambda p: 0 <= p.x < m and 0 <= p.y < n and maze[p.x][p.y] == 0, nbcs)
+            ret = any(map(maze_helper, nbcs))
         if not ret:
             del path[-1]
         return ret
