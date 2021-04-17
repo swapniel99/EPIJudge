@@ -16,17 +16,17 @@ def search_maze(maze: List[List[int]], s: Coordinate, e: Coordinate) -> List[Coo
     m, n = len(maze), len(maze[0])
 
     def maze_helper(c: Coordinate):
-        path.append(c)
-        maze[c.x][c.y] = 2
-        if c == e:
-            ret = True
-        else:
-            nbcs = [(c.x + 1, c.y), (c.x - 1, c.y), (c.x, c.y + 1), (c.x, c.y - 1)]
-            nbcs = map(lambda tup: Coordinate(tup[0], tup[1]), nbcs)
-            nbcs = filter(lambda p: 0 <= p.x < m and 0 <= p.y < n and maze[p.x][p.y] == 0, nbcs)
-            ret = any(map(maze_helper, nbcs))
-        if not ret:
-            del path[-1]
+        ret = False
+        if 0 <= c.x < m and 0 <= c.y < n and maze[c.x][c.y] == 0:
+            path.append(c)
+            maze[c.x][c.y] = 2
+            if c == e:
+                ret = True
+            else:
+                nbcs = [(c.x + 1, c.y), (c.x - 1, c.y), (c.x, c.y + 1), (c.x, c.y - 1)]
+                ret = any(map(lambda tup: maze_helper(Coordinate(tup[0], tup[1])), nbcs))
+            if not ret:
+                path.pop()
         return ret
 
     path = list()
