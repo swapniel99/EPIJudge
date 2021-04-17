@@ -12,10 +12,25 @@ WHITE, BLACK = range(2)
 Coordinate = collections.namedtuple('Coordinate', ('x', 'y'))
 
 
-def search_maze(maze: List[List[int]], s: Coordinate,
-                e: Coordinate) -> List[Coordinate]:
-    # TODO - you fill in here.
-    return []
+def search_maze(maze: List[List[int]], s: Coordinate, e: Coordinate) -> List[Coordinate]:
+    m, n = len(maze), len(maze[0])
+
+    def maze_helper(c: Coordinate):
+        path.append(c)
+        maze[c.x][c.y] = 2
+        if c == e:
+            ret = True
+        else:
+            nbs = [(c.x + 1, c.y), (c.x - 1, c.y), (c.x, c.y + 1), (c.x, c.y - 1)]
+            ret = any(map(maze_helper, (Coordinate(x, y) for (x, y) in nbs if 0 <= x < m and 0 <= y < n
+                                        and maze[x][y] == 0)))
+        if not ret:
+            del path[-1]
+        return ret
+
+    path = list()
+    maze_helper(s)
+    return path
 
 
 def path_element_is_feasible(maze, prev, cur):
@@ -50,6 +65,4 @@ def search_maze_wrapper(executor, maze, s, e):
 
 
 if __name__ == '__main__':
-    exit(
-        generic_test.generic_test_main('search_maze.py', 'search_maze.tsv',
-                                       search_maze_wrapper))
+    exit(generic_test.generic_test_main('search_maze.py', 'search_maze.tsv', search_maze_wrapper))
