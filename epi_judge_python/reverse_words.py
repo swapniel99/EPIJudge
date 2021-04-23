@@ -35,14 +35,5 @@ def reverse_words_wrapper(executor, s):
     return ''.join(s_copy)
 
 
-def reverse_words2(s):
-    return ' '.join(reversed(s.split(' ')))
-
-
-@enable_executor_hook
-def reverse_words_wrapper2(executor, s):
-    return executor.run(functools.partial(reverse_words2, s))
-
-
 if __name__ == '__main__':
     exit(generic_test.generic_test_main('reverse_words.py', 'reverse_words.tsv', reverse_words_wrapper))
